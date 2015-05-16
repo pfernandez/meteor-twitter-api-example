@@ -3,12 +3,26 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Exploring the Twitter API with MeteorJS</h1>
 
-  {{> hello}}
+  {{> twitterData}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="twitterData">
+	
+	<h2>Statuses</h2>
+	
+	{{#each data.statuses}}
+		<h4>{{created_at}}</h4>
+		<ul>
+			<li><strong>Text: </strong> {{text}}</li>
+			<li><strong>Source: </strong> {{{source}}}</li>
+			<li><strong>User: </strong> {{user.name}}</li>
+		</ul>
+	{{else}}
+		<p>Waiting for data...</p>
+	{{/each}}
+
+	<pre>{{rawData}}</pre>
+
 </template>
